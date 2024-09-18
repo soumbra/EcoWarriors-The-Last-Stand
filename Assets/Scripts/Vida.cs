@@ -7,27 +7,26 @@ public class Vida : MonoBehaviour
     private int vidaAtual;
     private int vidaTotal = 100;
 
-    [SerializeField] private BarraDeVida barraDeVida; 
-
+    [SerializeField] private BarraDeVida barraDeVida;  
 
     private void Start()
     {
         vidaAtual = vidaTotal;
-        barraDeVida.AlterarBarraDeVida(vidaAtual, vidaTotal);
+        barraDeVida.AlterarBarraDeVida(vidaAtual, vidaTotal);  
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            AplicarDano(10);
+            AplicarDano(10); 
         }
     }
 
-    private void AplicarDano(int dano)
+    public void AplicarDano(int dano)
     {
-        vidaAtual -= 10;
-        barraDeVida.AlterarBarraDeVida(vidaAtual, vidaTotal);
+        vidaAtual -= dano;
+        if (vidaAtual < 0) vidaAtual = 0;  
+        barraDeVida.AlterarBarraDeVida(vidaAtual, vidaTotal);  
     }
-    
 }
